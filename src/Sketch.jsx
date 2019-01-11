@@ -2,11 +2,13 @@ import React from "react";
 import canvasSketch from "canvas-sketch";
 
 const settings = {
-  dimensions: [400, 400]
+  dimensions: [400, 400],
+  animate: true,
+  fps: 24
 };
 
 const sketch = () => {
-  return ({ context, width, height }) => {
+  return ({ context, width, height, time }) => {
     context.fillStyle = "#ffffff";
     context.fillRect(0, 0, width, height);
 
@@ -26,7 +28,7 @@ const sketch = () => {
       let _x = x % h;
       let _y = Math.floor(x / h);
 
-      const angle = Math.sin(x * 0.025); // n * Math.PI * 2;
+      const angle = Math.sin(_y * time * 0.1); // n * Math.PI * 2;
 
       context.beginPath();
       context.moveTo(
