@@ -28,26 +28,29 @@ const sketch = () => {
       let _x = x % h;
       let _y = Math.floor(x / h);
 
+      let midX = _x * rx + rx * 0.5;
+      let midY = _y * ry + ry * 0.5;
+
       const angle =
-        Math.atan2(h * 0.5 * rx - _x * rx, v * 0.5 * ry - _y * ry) * time * 1;
+        Math.atan2(h * 0.5 * rx - midX, v * 0.5 * ry - midY) * time * 0.5;
 
       context.beginPath();
       context.moveTo(
-        _x * rx + rx * 0.5 - Math.sin(angle) * lineLength,
-        _y * ry + ry * 0.5 - Math.cos(angle) * lineLength
+        midX - Math.sin(angle) * lineLength,
+        midY - Math.cos(angle) * lineLength
       );
 
       context.lineTo(
-        _x * rx + rx * 0.5 + Math.sin(angle) * lineLength,
-        _y * ry + ry * 0.5 + Math.cos(angle) * lineLength
+        midX + Math.sin(angle) * lineLength,
+        midY + Math.cos(angle) * lineLength
       );
       context.stroke();
 
       context.fillStyle = "#000000";
       context.beginPath();
       context.arc(
-        _x * rx + rx * 0.5 + Math.sin(angle) * lineLength,
-        _y * ry + ry * 0.5 + Math.cos(angle) * lineLength,
+        midX + Math.sin(angle) * lineLength,
+        midY + Math.cos(angle) * lineLength,
         2.5,
         0,
         Math.PI * 2
@@ -56,8 +59,8 @@ const sketch = () => {
 
       context.beginPath();
       context.arc(
-        _x * rx + rx * 0.5 - Math.sin(angle) * lineLength,
-        _y * ry + ry * 0.5 - Math.cos(angle) * lineLength,
+        midX - Math.sin(angle) * lineLength,
+        midY - Math.cos(angle) * lineLength,
         2.5,
         0,
         Math.PI * 2
