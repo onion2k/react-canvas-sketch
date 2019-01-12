@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Sketch from "./Sketch";
+import Sketch2 from "./Sketch2";
 
 import "./styles.css";
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <p>Simple sketch</p>
-      <Sketch />
+      <Sketch2 />
       <p>Sketch</p>
     </div>
   );
