@@ -28,7 +28,8 @@ const sketch = () => {
       let _x = x % h;
       let _y = Math.floor(x / h);
 
-      const angle = (1 + x) * time * 0.01;
+      const angle =
+        Math.atan2(h * 0.5 * rx - _x * rx, v * 0.5 * ry - _y * ry) * time * 1;
 
       context.beginPath();
       context.moveTo(
