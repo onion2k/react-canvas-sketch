@@ -20,8 +20,8 @@ const sketch = () => {
     let ry = height / v;
 
     const i = h * v;
-    const lineLength = 25.0;
-    context.lineWidth = 2.0;
+    const lineLength = 15.0;
+    context.lineWidth = 1.0;
     context.strokeStyle = `rgb(64,64,64)`;
 
     for (let x = 0; x < i; x++) {
@@ -32,7 +32,7 @@ const sketch = () => {
       let midY = _y * ry + ry * 0.5;
 
       const angle =
-        Math.atan2(midY - v * 0.5 * ry, midX - h * 0.5 * rx) + time * 0.25;
+        Math.atan2(midY - v * 0.5 * ry, midX - h * 0.5 * rx) + time * 0.75;
 
       context.beginPath();
       context.moveTo(
@@ -46,12 +46,14 @@ const sketch = () => {
       );
       context.stroke();
 
+      let radius = 3;
+
       context.fillStyle = "#000000";
       context.beginPath();
       context.arc(
         midX + Math.sin(angle) * lineLength,
         midY + Math.cos(angle) * lineLength,
-        2.5,
+        radius,
         0,
         Math.PI * 2
       );
@@ -61,7 +63,7 @@ const sketch = () => {
       context.arc(
         midX - Math.sin(angle) * lineLength,
         midY - Math.cos(angle) * lineLength,
-        2.5,
+        radius,
         0,
         Math.PI * 2
       );
