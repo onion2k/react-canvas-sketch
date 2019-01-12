@@ -26,13 +26,13 @@ const sketch = () => {
 
     for (let x = 0; x < i; x++) {
       let _x = x % h;
-      let _y = Math.floor(x / h);
+      let _y = Math.floor(x / v);
 
       let midX = _x * rx + rx * 0.5;
       let midY = _y * ry + ry * 0.5;
 
       const angle =
-        Math.atan2(v * 0.5 * ry - midY, h * 0.5 * rx - midX) * time * 0.025;
+        Math.atan2(midY - v * 0.5 * ry, midX - h * 0.5 * rx) + time * 0.25;
 
       context.beginPath();
       context.moveTo(
