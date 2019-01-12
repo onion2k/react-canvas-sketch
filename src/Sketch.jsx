@@ -20,7 +20,7 @@ const sketch = () => {
     let ry = height / v;
 
     const i = h * v;
-    const lineLength = 12.0;
+    const lineLength = 20.0;
     context.lineWidth = 2.0;
     context.strokeStyle = `rgb(64,64,64)`;
 
@@ -28,7 +28,7 @@ const sketch = () => {
       let _x = x % h;
       let _y = Math.floor(x / h);
 
-      const angle = Math.sin(_y * time * 0.1); // n * Math.PI * 2;
+      const angle = (1 + x) * time * 0.01;
 
       context.beginPath();
       context.moveTo(
@@ -41,6 +41,27 @@ const sketch = () => {
         _y * ry + ry * 0.5 + Math.cos(angle) * lineLength
       );
       context.stroke();
+
+      context.fillStyle = "#000000";
+      context.beginPath();
+      context.arc(
+        _x * rx + rx * 0.5 + Math.sin(angle) * lineLength,
+        _y * ry + ry * 0.5 + Math.cos(angle) * lineLength,
+        2.5,
+        0,
+        Math.PI * 2
+      );
+      context.fill();
+
+      context.beginPath();
+      context.arc(
+        _x * rx + rx * 0.5 - Math.sin(angle) * lineLength,
+        _y * ry + ry * 0.5 - Math.cos(angle) * lineLength,
+        2.5,
+        0,
+        Math.PI * 2
+      );
+      context.fill();
     }
 
     context.fillStyle = `rgb(255,255,255)`;
