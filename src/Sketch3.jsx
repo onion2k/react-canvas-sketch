@@ -19,14 +19,15 @@ const line = (context, x, y, angle, length) => {
 
 const sketch = () => {
   return ({ context, width, height, time }) => {
-    context.fillStyle = "rgba(255,255,255,0.1)";
+    context.fillStyle = "rgba(255,255,255,0.2)";
     context.fillRect(0, 0, width, height);
 
-    let angle = 45;
-    let lineLength = 30;
+    let angle = 0;
+    let lineLength = 60;
+    time = time * -2;
 
-    context.strokeStyle = `rgb(64,64,64)`;
-    context.lineWidth = 2;
+    context.strokeStyle = `rgb(128,128,192)`;
+    context.lineWidth = 1;
 
     let pos = { x: width * 0.5, y: height * 0.5 };
 
