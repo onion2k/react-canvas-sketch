@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Sketch2 from "./Sketch2";
+import Sketch from "./Sketch3";
 
 import "./styles.css";
 
 function App() {
   return (
     <div className="App">
-      <p>Simple sketch</p>
-      <Sketch2 />
+      <p>Simple sketch 3</p>
+      <Sketch />
       <p>Sketch</p>
     </div>
   );
