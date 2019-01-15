@@ -19,31 +19,21 @@ const line = (context, x, y, angle, length) => {
 
 const sketch = () => {
   return ({ context, width, height, time }) => {
-    context.fillStyle = "rgba(255,255,255,1)";
+    context.fillStyle = "rgba(255,255,255,0.1)";
     context.fillRect(0, 0, width, height);
 
     let angle = 45;
     let lineLength = 30;
 
     context.strokeStyle = `rgb(64,64,64)`;
+    context.lineWidth = 2;
 
     let pos = { x: width * 0.5, y: height * 0.5 };
 
-    pos = line(context, pos.x, pos.y, angle + time * 0.5, lineLength);
-    line(context, pos.x, pos.y, angle + time * 0.25, lineLength);
-
-    // let radius = 3;
-
-    // context.fillStyle = "#000000";
-    // context.beginPath();
-    // context.arc(
-    //   midX + Math.sin(angle) * lineLength,
-    //   midY + Math.cos(angle) * lineLength,
-    //   radius,
-    //   0,
-    //   Math.PI * 2
-    // );
-    // context.fill();
+    pos = line(context, pos.x, pos.y, angle + time * 0.5, lineLength * 0.5);
+    pos = line(context, pos.x, pos.y, angle + time * 0.3, lineLength * 1.5);
+    pos = line(context, pos.x, pos.y, angle + time * 0.75, lineLength * 0.75);
+    pos = line(context, pos.x, pos.y, angle + time * 1, lineLength * 0.5);
   };
 };
 
