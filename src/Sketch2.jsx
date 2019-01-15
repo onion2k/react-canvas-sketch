@@ -9,11 +9,11 @@ const settings = {
 
 const sketch = () => {
   return ({ context, width, height, time }) => {
-    context.fillStyle = "#ffffff";
+    context.fillStyle = "rgba(255,255,255,0.25)";
     context.fillRect(0, 0, width, height);
 
     let nScale = 4;
-    let h = 8;
+    let h = 11;
     let v = Math.floor(h * (height / width));
 
     let rx = width / h;
