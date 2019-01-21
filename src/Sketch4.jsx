@@ -10,8 +10,8 @@ const settings = {
 class segment {
   _x: 0;
   _y: 0;
-  length = 5 + Math.random() * 40;
-  speed = 2 + Math.random() * 50;
+  length = 5 + Math.random() * 20;
+  speed = 2 + Math.random() * 10;
 }
 
 const line = (x, y, angle, length) => {
@@ -20,11 +20,14 @@ const line = (x, y, angle, length) => {
   return { x: newX, y: newY };
 };
 
-export default class Sketch3 extends React.Component {
+export default class Sketch4 extends React.Component {
   constructor(props) {
     super(props);
-    let segments = Array.from(Array(25), () => new segment());
+    const dotCount = 50;
+    let segments = Array.from(Array(dotCount), () => new segment());
+    segments[0].length = 100;
     this.state = {
+      dotCount: dotCount,
       segments: segments,
       ref: React.createRef()
     };
@@ -33,10 +36,10 @@ export default class Sketch3 extends React.Component {
   componentDidMount() {
     const sketch = () => {
       return ({ context, width, height, frame }) => {
-        context.fillStyle = "rgba(255,255,255,0.05)";
+        context.fillStyle = "rgba(255,255,255,0.001)";
         context.fillRect(0, 0, width, height);
 
-        context.lineWidth = 2;
+        context.lineWidth = 5;
 
         let pos = { x: width * 0.5, y: height * 0.5 };
 
@@ -47,7 +50,7 @@ export default class Sketch3 extends React.Component {
           pos = line(
             pos.x,
             pos.y,
-            segment.speed * frame * 0.001,
+            segment.speed * frame * 0.0025,
             segment.length
           );
 
@@ -57,7 +60,9 @@ export default class Sketch3 extends React.Component {
           segment._x = pos.x;
           segment._y = pos.y;
 
-          context.strokeStyle = `rgb(128,0,${(255 / 25) * i})`;
+          context.strokeStyle = `hsl(${Math.floor(
+            (255 / this.state.dotCount) * i
+          )}, 100%, 50%)`;
 
           context.beginPath();
           context.moveTo(x, y);
