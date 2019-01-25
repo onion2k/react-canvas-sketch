@@ -7,9 +7,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="App">
-      <p>Simple sketch 5</p>
       <Sketch />
-      <p>Sketch</p>
     </div>
   );
 }
