@@ -18,7 +18,7 @@ export default class Sketch5 extends React.Component {
   }
   componentDidMount() {
     const sketch = () => {
-      const points = 600;
+      const points = 200;
       const TAU = Math.PI * 2;
       const segment = TAU / points;
       return ({ context, width, height, frame }) => {
@@ -28,28 +28,27 @@ export default class Sketch5 extends React.Component {
         context.fillStyle = colors[0];
         context.fillRect(0, 0, width, height);
 
-        context.beginPath();
-        context.strokeStyle = colors[3];
-        context.lineWidth = 0.5;
-
         for (let pointCounter = 0; pointCounter < points; pointCounter++) {
-          const f = frame * 0.25;
+          const f = frame * -0.2;
           const c = segment * (pointCounter + f);
           const sinc = Math.sin(c);
           const cosc = Math.cos(c);
+
+          context.beginPath();
+          context.strokeStyle = colors[1 + (pointCounter % 4)];
+          context.lineWidth = 2;
 
           context.moveTo(x + sinc * 100, y + cosc * 100);
 
           context.lineTo(
             x +
               sinc *
-                (200 + Math.sin(((TAU * 24) / points) * pointCounter) * 10),
+                (200 + Math.cos(((TAU * 12) / points) * pointCounter) * 10),
             y +
-              cosc * (200 + Math.sin(((TAU * 24) / points) * pointCounter) * 10)
+              cosc * (200 + Math.sin(((TAU * 12) / points) * pointCounter) * 10)
           );
+          context.stroke();
         }
-
-        context.stroke();
       };
     };
 
