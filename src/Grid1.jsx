@@ -28,7 +28,7 @@ export default class Sketch5 extends React.Component {
         const xPos = width / cells;
         const yPos = height / cells;
 
-        context.fillStyle = "#FFFFFF";
+        context.fillStyle = colors[3];
         context.fillRect(0, 0, width, height);
 
         for (let i = 0; i < cells * cells; i++) {
@@ -48,6 +48,8 @@ export default class Sketch5 extends React.Component {
             xPos - margin,
             yPos - margin
           );
+          context.fillStyle = "#FFFFFF";
+          context.fill();
           context.strokeStyle = colors[0];
           context.lineWidth = lineWidth;
           context.stroke();
@@ -65,6 +67,8 @@ export default class Sketch5 extends React.Component {
           );
           context.fillStyle = colors[1];
           context.fill();
+          context.strokeStyle = colors[2];
+          context.stroke();
           context.resetTransform();
         }
       };
