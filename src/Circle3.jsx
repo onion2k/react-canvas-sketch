@@ -2,7 +2,7 @@ import React from "react";
 import canvasSketch from "canvas-sketch";
 
 const colors = [
-  "rgba(255,255,255,0.25)",
+  "rgba(255,255,255,1)",
   "#5dff00",
   "#fbff12",
   "#ff00f6",
@@ -24,7 +24,7 @@ export default class Sketch5 extends React.Component {
   }
   componentDidMount() {
     const sketch = () => {
-      const points = 100;
+      const points = 150;
       const TAU = Math.PI * 2;
       const segment = TAU / points;
       return ({ context, width, height, frame }) => {
@@ -35,21 +35,39 @@ export default class Sketch5 extends React.Component {
         context.fillRect(0, 0, width, height);
 
         for (let pointCounter = 0; pointCounter < points; pointCounter++) {
-          const f = frame * -0.01;
+          const f = frame * -0.02;
 
-          const c = segment * pointCounter + f;
+          const c = segment * pointCounter;
           const sinc = Math.sin(c);
           const cosc = Math.cos(c);
 
           context.beginPath();
           context.strokeStyle = colors[1 + (pointCounter % 4)];
-          context.lineWidth = 5;
+          context.lineWidth = 4;
 
-          const offset = Math.sin(((TAU * 7) / points) * pointCounter + f) * 10;
+          const offset = Math.sin(((TAU * 7) / points) * pointCounter + f) * 40;
 
-          context.moveTo(x + sinc * (100 + offset), y + cosc * (100 + offset));
+          context.moveTo(
+            x + sinc * (100 + offset * -1),
+            y + cosc * (100 + offset * -1)
+          );
 
           context.lineTo(x + sinc * (200 + offset), y + cosc * (200 + offset));
+          context.stroke();
+
+          context.beginPath();
+          context.strokeStyle = "#000000";
+          context.lineWidth = 3;
+
+          const offset2 =
+            Math.sin(((TAU * 7) / points) * pointCounter + f) * -40;
+
+          context.moveTo(x + sinc * (60 + offset2), y + cosc * (60 + offset2));
+
+          context.lineTo(
+            x + sinc * (100 + offset2),
+            y + cosc * (100 + offset2)
+          );
           context.stroke();
         }
       };

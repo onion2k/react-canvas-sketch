@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Sketch from "./Circle2";
+import Sketch from "./Circle3";
 
 import "./styles.css";
 
